@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/Project_React-essentials/",
+  // TODO add when GH pages are set
+  // base: "/X/",
   plugins: [react()]
 });

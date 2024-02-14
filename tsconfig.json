@@ -11,17 +11,24 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    // Disable emitting files from a compilation.
     "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
+    // Report errors on unused local variables.
     "noUnusedLocals": true,
+    // Report errors on unused parameters in functions.
     "noUnusedParameters": true,
+    // Report errors for fallthrough cases in switch statements.
+    // Ensures that any non-empty case inside a switch statement includes either break, return,
+    // or throw. This means you won’t accidentally ship a case fallthrough bug.
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
+    // TypeScript will issue an error whenever it would have inferred any
+    "noImplicitAny": true
   },
-  "include": ["src"], // which files to compile
+  "include": ["src/**/*"], // which files to compile
   "exclude": ["node_modules"], // which files to skip
   "references": [{ "path": "./tsconfig.node.json" }]
 }
