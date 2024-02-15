@@ -10,6 +10,7 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
+    "strictPropertyInitialization": true,
     "isolatedModules": true,
     // Disable emitting files from a compilation.
     "noEmit": true,

@@ -30,14 +30,5 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "@typescript-eslint/space-infix-ops": "error",
-    "@typescript-eslint/typedef": [
-      "error",
-      {
-        arrowParameter: true,
-        parameter: true,
-        propertyDeclaration: true,
-        objectDestructuring: false,
-      },
-    ],
   },
 }
