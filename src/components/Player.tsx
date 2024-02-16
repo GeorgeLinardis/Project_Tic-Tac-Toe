@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 type PlayerProps = {
   name: string;
@@ -29,6 +30,16 @@ const Player = ({ name, symbol }: PlayerProps): React.JSX.Element => {
       </button>
     </li>
   );
+};
+
+Player.propTypes = {
+  name: PropTypes.string,
+  symbol: PropTypes.string,
+};
+
+Player.defaultProps = {
+  name: '',
+  symbol: '',
 };
 
 export default Player;
