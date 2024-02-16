@@ -15,6 +15,7 @@ module.exports = {
   },
   plugins: ["react-refresh"],
   rules: {
+    "arrow-parens": [1, "as-needed", { "requireForBlockBody": true }],
     "react/function-component-definition": [
       "error",
       {

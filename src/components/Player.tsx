@@ -10,7 +10,7 @@ const Player = ({ name, symbol }: PlayerProps): React.JSX.Element => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   function handleEditClick(): void {
-    setIsEditing((wasEditing) => !wasEditing);
+    setIsEditing(wasEditing => !wasEditing);
   }
 
   return (
