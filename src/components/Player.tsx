@@ -5,14 +5,20 @@ type PlayerProps = {
   initialName: string;
   symbol: string;
   isActive: boolean;
+  onPlayerNameChange: (symbol: string, playerName: string) => void;
 };
 
-const Player = ({ initialName, symbol, isActive }: PlayerProps): React.JSX.Element => {
+const Player = ({
+  initialName, symbol, isActive, onPlayerNameChange,
+} : PlayerProps): React.JSX.Element => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [playerName, setPlayerName] = useState<string>(initialName);
 
   function handleEditClick(): void {
     setIsEditing(wasEditing => !wasEditing);
+    if (isEditing) {
+      onPlayerNameChange(symbol, playerName);
+    }
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {

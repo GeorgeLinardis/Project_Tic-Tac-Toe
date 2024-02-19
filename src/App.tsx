@@ -18,6 +18,10 @@ function getDerivedActivePlayer(turns: TurnsType): string {
 
 function App() {
   const [turns, setTurns] = useState<TurnsType>([]);
+  const [players, setPlayers] = useState({
+    [PLAYER_SYMBOL.X]: 'Player 1',
+    [PLAYER_SYMBOL.O]: 'Player 2',
+  });
 
   const currentPlayer = getDerivedActivePlayer(turns);
   const board = [...INITIAL_BOARD.map(arr => [...arr])];
@@ -37,7 +41,7 @@ function App() {
       && firstSquareSymbol === secondSquareSymbol
       && firstSquareSymbol === thirdSquareSymbol
     ) {
-      winner = firstSquareSymbol;
+      winner = players[firstSquareSymbol];
     }
   });
 
@@ -57,12 +61,25 @@ function App() {
     });
   }, [setTurns, getDerivedActivePlayer]);
 
+  const handlePlayerNameChange = useCallback((symbol: string, newName: string) => {
+    setPlayers(prevPlayers => ({
+      ...prevPlayers,
+      [symbol]: newName,
+    }));
+  }, [setPlayers]);
+
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName="Player 1" symbol={PLAYER_SYMBOL.X} isActive={currentPlayer === PLAYER_SYMBOL.X} />
-          <Player initialName="Player 2" symbol={PLAYER_SYMBOL.O} isActive={currentPlayer === PLAYER_SYMBOL.O} />
+          {Object.keys(players).map((playerSymbol: string) => (
+            <Player
+              initialName={players[playerSymbol]}
+              symbol={playerSymbol}
+              isActive={currentPlayer === playerSymbol}
+              onPlayerNameChange={handlePlayerNameChange}
+            />
+          ))}
         </ol>
         {(winner || hasDraw) && (
           <GameOver
