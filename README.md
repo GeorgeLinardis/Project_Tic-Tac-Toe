@@ -6,14 +6,15 @@ This repository contains a project created while working on an Academind course 
 
 
 ## Enhancements made to the project
-- Logic/UI changes
+- Typescript
+- Sass
 - GitHub Actions
 - ESLinting
-- Typescript
-- SASS
 
 
 ## Project preview
+
+![game-preview](./public/tic-tac-toe.png)
 
 Check out the live demo [here](#).
 
