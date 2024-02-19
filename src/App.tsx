@@ -5,6 +5,7 @@ import { TurnsType } from './types';
 import Player from './components/Player';
 import GameBoard from './components/GameBoard';
 import Log from './components/Log';
+import GameOver from './components/GameOver';
 
 function getDerivedActivePlayer(turns: TurnsType): string {
   let activePlayer = PLAYER_SYMBOL.X;
@@ -19,7 +20,7 @@ function App() {
   const [turns, setTurns] = useState<TurnsType>([]);
 
   const currentPlayer = getDerivedActivePlayer(turns);
-  const board = INITIAL_BOARD;
+  const board = [...INITIAL_BOARD.map(arr => [...arr])];
   let winner;
 
   turns.forEach(({ square: { row, col }, player }): void => {
@@ -39,6 +40,8 @@ function App() {
       winner = firstSquareSymbol;
     }
   });
+
+  const hasDraw = turns.length === 9 && !winner;
 
   const handleSelectSquare = useCallback((rowIndex: number, colIndex: number) => {
     setTurns((prevTurns) => {
@@ -61,7 +64,12 @@ function App() {
           <Player initialName="Player 1" symbol={PLAYER_SYMBOL.X} isActive={currentPlayer === PLAYER_SYMBOL.X} />
           <Player initialName="Player 2" symbol={PLAYER_SYMBOL.O} isActive={currentPlayer === PLAYER_SYMBOL.O} />
         </ol>
-        {winner && <p>{`Player ${winner} wins!`}</p>}
+        {(winner || hasDraw) && (
+          <GameOver
+            winner={winner}
+            onReset={() => setTurns([])}
+          />
+        )}
         <GameBoard
           onSelectSquare={handleSelectSquare}
           board={board}
