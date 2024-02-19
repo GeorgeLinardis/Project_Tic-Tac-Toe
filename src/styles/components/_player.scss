@@ -3,6 +3,11 @@
   padding: 0.5rem;
   border-radius: 4px;
   font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &-name {
     display: inline-block;
     width: 10rem;

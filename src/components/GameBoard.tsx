@@ -1,30 +1,17 @@
-import { useState } from 'react';
+import { BoardType } from '../types';
 
-const initialGameBoard: (null | string)[][] = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
+type GameBoardType = {
+  onSelectSquare: (rowIndex: number, colIndex: number) => void;
+  board: BoardType
+};
 
-export default function GameBoard(): React.JSX.Element {
-  const [gameBoard, setGameBoard] = useState<(null | string)[][]>(initialGameBoard);
-
-  function handleSelectSquare(
-    rowIndex: number,
-    colIndex: number,
-  ): void {
-    setGameBoard((prevGameBoard) => {
-      const updatedBoard: (string | null)[][] = [
-        ...prevGameBoard.map(innerArr => [...innerArr]),
-      ];
-      updatedBoard[rowIndex][colIndex] = 'X';
-
-      return updatedBoard;
-    });
-  }
+export default function GameBoard({
+  onSelectSquare,
+  board,
+}: GameBoardType): React.JSX.Element {
   return (
     <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         // eslint-disable-next-line react/no-array-index-key
         <li key={rowIndex}>
           <ol>
@@ -33,7 +20,8 @@ export default function GameBoard(): React.JSX.Element {
               <li key={colIndex}>
                 <button
                   type="button"
-                  onClick={() => handleSelectSquare(rowIndex, colIndex)}
+                  disabled={!!playerSymbol}
+                  onClick={() => onSelectSquare(rowIndex, colIndex)}
                 >
                   {playerSymbol}
                 </button>

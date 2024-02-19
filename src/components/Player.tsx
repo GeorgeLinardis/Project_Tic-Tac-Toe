@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 type PlayerProps = {
   initialName: string;
   symbol: string;
+  isActive: boolean;
 };
 
-const Player = ({ initialName, symbol }: PlayerProps): React.JSX.Element => {
+const Player = ({ initialName, symbol, isActive }: PlayerProps): React.JSX.Element => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [playerName, setPlayerName] = useState<string>(initialName);
 
@@ -19,7 +20,7 @@ const Player = ({ initialName, symbol }: PlayerProps): React.JSX.Element => {
   }
 
   return (
-    <li>
+    <li className={isActive ? 'active' : undefined}>
       <span className="player">
         {isEditing && (
           <input
