@@ -16,7 +16,7 @@ This repository contains a project created while working on an Academind course 
 
 ![game-preview](./public/tic-tac-toe.png)
 
-Check out the live demo [here](#).
+Check out the live demo [here](https://georgelinardis.github.io/Project_Tic-Tac-Toe/).
 
 
 
