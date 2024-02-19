@@ -10,7 +10,7 @@ export default function GameBoard({
   board,
 }: GameBoardType): React.JSX.Element {
   return (
-    <ol id="game-board">
+    <ol className="game-board">
       {board.map((row, rowIndex) => (
         // eslint-disable-next-line react/no-array-index-key
         <li key={rowIndex}>

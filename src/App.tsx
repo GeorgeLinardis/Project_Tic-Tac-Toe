@@ -70,8 +70,8 @@ function App() {
 
   return (
     <main>
-      <div id="game-container">
-        <ol id="players" className="highlight-player">
+      <div className="game-container">
+        <ol className="players highlight-player">
           {Object.keys(players).map((playerSymbol: string) => (
             <Player
               initialName={players[playerSymbol]}

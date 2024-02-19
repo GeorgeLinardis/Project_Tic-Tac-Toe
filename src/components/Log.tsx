@@ -6,7 +6,7 @@ type LogType = {
 
 export default function Log({ turns }: LogType): React.JSX.Element {
   return (
-    <ol id="log">
+    <ol className="log">
       {turns.map((turn: TurnType) => (
         <li
           key={`${turn.square.row}-${turn.square.col}`}
